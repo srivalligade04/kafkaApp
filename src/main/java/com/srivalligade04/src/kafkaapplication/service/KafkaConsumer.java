@@ -9,8 +9,12 @@ import java.util.List;
 
 @Service
 public class KafkaConsumer {
+    
+    @Value("${spring.kafka.app.topic}")
+    private String topic;
+    
     public static List<String> messages = new ArrayList<>();
-    private final static String topic = "localTopic";
+
     private final static String groupId = "kafkaGroup";
 
     @KafkaListener(topics = topic, groupId = groupId)
